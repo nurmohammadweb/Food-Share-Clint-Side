@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import Login from "../pages/Login";
 import Regester from "../pages/Regester";
 import AvailableFoods from "../pages/AvailableFoods";
+import AddFood from "../pages/AddFood";
 
 
  const router = createBrowserRouter([
@@ -24,7 +25,8 @@ import AvailableFoods from "../pages/AvailableFoods";
          loader: () => fetch('http://localhost:3000/plateShare')
        },
        {
-         path:"/"
+         path: "/addfood",
+         element:<AddFood></AddFood>
        }
        ,
        {
