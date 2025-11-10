@@ -5,18 +5,21 @@ import Login from "../pages/Login";
 import Regester from "../pages/Regester";
 import AvailableFoods from "../pages/AvailableFoods";
 import AddFood from "../pages/AddFood";
+import UpdateProfile from "../component/UpdateProfile";
+import ManageMyFoods from "../component/ManageMyFoods";
+import MyFoodRequests from "../component/MyFoodRequests";
 
 
  const router = createBrowserRouter([
-  {
-    path: "/",
+   {
+     path: "/",
      element: <MainLayout></MainLayout>,
      children: [
        {
          index: true,
          path: "/",
          element: <Home></Home>,
-          loader: () => fetch('http://localhost:3000/plateShare')
+         loader: () => fetch('http://localhost:3000/plateShare')
          
        },
        {
@@ -26,9 +29,20 @@ import AddFood from "../pages/AddFood";
        },
        {
          path: "/addfood",
-         element:<AddFood></AddFood>
-       }
-       ,
+         element: <AddFood></AddFood>
+       },
+       {
+         path: "/updateprofile",
+         element: <UpdateProfile />
+       },
+       {
+         path: "/managemyfoods",
+         element: <ManageMyFoods/>
+       },
+       {
+         path: "/myfoodrequests",
+         element:<MyFoodRequests/>
+       },
        {
          path: "/auth/login",
          element:<Login></Login>

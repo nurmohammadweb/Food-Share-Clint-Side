@@ -8,7 +8,7 @@ const Navbar = () => {
   const links = <>
     <NavLink to="/"><li className='m-3 text-[15px] font-bold'>Home</li></NavLink>
     <NavLink to="/availablefoods"> <li className='m-3 text-[15px] font-bold'>Available Foods</li></NavLink>
-    <NavLink to="/addfood"> <li className='m-3 text-[15px] font-bold'>Add Food</li></NavLink>
+   
   </>
 
   const handleLogOut = () => {
@@ -45,29 +45,34 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
         {
-          user ? <div className="dropdown dropdown-end">
+          user ? (<div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user.image} />
         </div>
-      </div>
+            </div>
+           
       <ul
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
+              <li>
+                 
           <a className="justify-between">
             Profile
-            <span className="badge">New</span>
-          </a>
+          <Link to="/updateprofile">  <span className="badge">Update</span></Link>
+          </a> 
         </li>
-        <li><a>Settings</a></li>
+        <li> <NavLink to="/addfood"> <li className='m-3 text-[15px] font-bold'>Add Food</li></NavLink></li>
+        <li> <NavLink to="/managemyfoods"> <li className='m-3 text-[15px] font-bold'>Manage My Foods</li></NavLink></li>
+        <li> <NavLink to="myfoodrequests"> <li className='m-3 text-[15px] font-bold'>My Food Requests</li></NavLink></li>
+        
             {
               user ?( <Link to="/auth/login" ><button className="btn" onClick={handleLogOut}>LogOut</button></Link>) : (<Link to="/auth/login" className="btn bg-blue-400"><IoMdLogIn /> Login</Link>)
             }
           </ul>
-         </div>  : (<Link to="/auth/login" ><button className="btn" onClick={handleLogOut}>Login</button></Link>)
+         </div>)  : (<Link to="/auth/login" ><button className="btn">Login</button></Link>)
        }
         
 
