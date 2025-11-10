@@ -8,6 +8,9 @@ import AddFood from "../pages/AddFood";
 import UpdateProfile from "../component/UpdateProfile";
 import ManageMyFoods from "../component/ManageMyFoods";
 import MyFoodRequests from "../component/MyFoodRequests";
+import AddFoodPrivate from "../provider/AddFoodPrivate";
+import ManagePrivate from "../provider/ManagePrivate";
+import RequestPrivate from "../provider/RequestPrivate";
 
 
  const router = createBrowserRouter([
@@ -29,7 +32,7 @@ import MyFoodRequests from "../component/MyFoodRequests";
        },
        {
          path: "/addfood",
-         element: <AddFood></AddFood>
+         element:(<AddFoodPrivate> <AddFood></AddFood></AddFoodPrivate>)
        },
        {
          path: "/updateprofile",
@@ -37,11 +40,11 @@ import MyFoodRequests from "../component/MyFoodRequests";
        },
        {
          path: "/managemyfoods",
-         element: <ManageMyFoods/>
+         element: (<ManagePrivate><ManageMyFoods/></ManagePrivate>)
        },
        {
          path: "/myfoodrequests",
-         element:<MyFoodRequests/>
+         element:(<RequestPrivate><MyFoodRequests/></RequestPrivate>)
        },
        {
          path: "/auth/login",

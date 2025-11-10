@@ -8,7 +8,9 @@ const Navbar = () => {
   const links = <>
     <NavLink to="/"><li className='m-3 text-[15px] font-bold'>Home</li></NavLink>
     <NavLink to="/availablefoods"> <li className='m-3 text-[15px] font-bold'>Available Foods</li></NavLink>
-   
+     <NavLink to="/addfood"> <li className='m-3 text-[15px] font-bold'>Add Food</li></NavLink>
+         <NavLink to="/managemyfoods"> <li className='m-3 text-[15px] font-bold'>Manage My Foods</li></NavLink>
+       <NavLink to="myfoodrequests"> <li className='m-3 text-[15px] font-bold'>My Food Requests</li></NavLink>
   </>
 
   const handleLogOut = () => {
@@ -50,7 +52,7 @@ const Navbar = () => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src={user.image} />
+            src={user?.photoURL || "/default-avatar.png"} />
         </div>
             </div>
            
@@ -58,15 +60,13 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               <li>
-                 
+                  <li>{user.name}</li>
+            <li>{user.email}</li>
           <a className="justify-between">
             Profile
           <Link to="/updateprofile">  <span className="badge">Update</span></Link>
           </a> 
         </li>
-        <li> <NavLink to="/addfood"> <li className='m-3 text-[15px] font-bold'>Add Food</li></NavLink></li>
-        <li> <NavLink to="/managemyfoods"> <li className='m-3 text-[15px] font-bold'>Manage My Foods</li></NavLink></li>
-        <li> <NavLink to="myfoodrequests"> <li className='m-3 text-[15px] font-bold'>My Food Requests</li></NavLink></li>
         
             {
               user ?( <Link to="/auth/login" ><button className="btn" onClick={handleLogOut}>LogOut</button></Link>) : (<Link to="/auth/login" className="btn bg-blue-400"><IoMdLogIn /> Login</Link>)
