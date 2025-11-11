@@ -13,6 +13,7 @@ import RequestPrivate from "../provider/RequestPrivate";
 import FoodDetails from "../pages/foodDetails";
 import FoodDetailsPrivate from "../provider/FoodDetailsPrivate";
 import MyUpdateFood from "../pages/MyUpdateFood";
+import ErrorPage from "../pages/ErrorPage";
 
 
  const router = createBrowserRouter([
@@ -67,7 +68,8 @@ import MyUpdateFood from "../pages/MyUpdateFood";
     ]
    },
    {
-     
+     path: "/*",
+     element:<ErrorPage></ErrorPage>
    }
  ]);
 
