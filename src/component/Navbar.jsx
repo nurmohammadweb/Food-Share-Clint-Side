@@ -14,6 +14,8 @@ const Navbar = () => {
   </>
 
   const handleLogOut = () => {
+    console.log("Current user:", user);
+
      console.log("user trying to logout");
     logOut().then(() => {
       alert("you logged out successfully");
@@ -60,16 +62,16 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               <li>
-                  <li>{user.name}</li>
+                  <li>{user.displayName || "No Name"}</li>
             <li>{user.email}</li>
-          <a className="justify-between">
+          {/* <a className="justify-between">
             Profile
           <Link to="/updateprofile">  <span className="badge">Update</span></Link>
-          </a> 
+          </a>  */}
         </li>
         
             {
-              user ?( <Link to="/auth/login" ><button className="btn" onClick={handleLogOut}>LogOut</button></Link>) : (<Link to="/auth/login" className="btn bg-blue-400"><IoMdLogIn /> Login</Link>)
+              user ?( <Link to="/auth/login" className='text-center mt-4' ><button className="btn " onClick={handleLogOut}>LogOut</button></Link>) : (<Link to="/auth/login" className="btn bg-blue-400"><IoMdLogIn /> Login</Link>)
             }
           </ul>
          </div>)  : (<Link to="/auth/login" ><button className="btn">Login</button></Link>)
