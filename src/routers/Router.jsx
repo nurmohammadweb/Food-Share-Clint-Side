@@ -22,13 +22,13 @@ import RequestPrivate from "../provider/RequestPrivate";
          index: true,
          path: "/",
          element: <Home></Home>,
-         loader: () => fetch('http://localhost:3000/plateShare')
+         loader: () => fetch('http://localhost:3000/topfoods')
          
        },
        {
          path: "/availablefoods",
          element: <AvailableFoods></AvailableFoods>,
-         loader: () => fetch('http://localhost:3000/plateShare')
+         loader: () => fetch('http://localhost:3000/allfoods')
        },
        {
          path: "/addfood",
@@ -57,7 +57,10 @@ import RequestPrivate from "../provider/RequestPrivate";
        }
        
     ]
-  },
+   },
+   {
+     
+   }
  ]);
 
 

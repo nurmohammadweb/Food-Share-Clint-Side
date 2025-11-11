@@ -5,8 +5,14 @@ import { Link } from 'react-router';
 
 const TopSixFoods = ({foods}) => {
   return (
-    <div>
-       <div className='grid grid-cols-3 items-center gap-10 w-10/12 mx-auto my-5'>
+    <Link to="/availablefoods">
+    
+       <div className=''>
+      <div>
+        <h1 className='text-center text-5xl font-bold'> Top Food Quantity Foods </h1>
+      </div>
+      <div className='grid grid-cols-3 items-center gap-10 w-10/12 mx-auto my-5'>
+        
       {
         foods.map((food) => <div key='_id' className="card bg-base-100 w-96 shadow-sm h-96">
   <figure className="px-10 pt-10">
@@ -23,7 +29,7 @@ const TopSixFoods = ({foods}) => {
   
     <div className="card-actions">
               <Link to="/availablefoods">
-                <button className="btn btn-primary">Views Details</button>
+                <button className="btn btn-primary">Views All Foods</button>
               </Link>
     </div>
   </div>
@@ -40,6 +46,8 @@ const TopSixFoods = ({foods}) => {
         </Link>
         </div>
    </div>
+
+    </Link>
     
   );
 };

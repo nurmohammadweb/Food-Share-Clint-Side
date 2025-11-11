@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { use } from 'react';
 import { Navigate } from 'react-router';
 import { AuthContext } from './AuthProvider';
 import Loading from '../component/Loading';
 
 const ManagePrivate = ({children}) => {
 
-  const { user,loading} = useContext(AuthContext);
+  const { user,loading} = use(AuthContext);
 
     if (loading) {
     return<Loading></Loading>
