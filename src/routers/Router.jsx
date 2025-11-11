@@ -11,6 +11,8 @@ import MyFoodRequests from "../component/MyFoodRequests";
 import AddFoodPrivate from "../provider/AddFoodPrivate";
 import ManagePrivate from "../provider/ManagePrivate";
 import RequestPrivate from "../provider/RequestPrivate";
+import FoodDetails from "../pages/foodDetails";
+import FoodDetailsPrivate from "../provider/FoodDetailsPrivate";
 
 
  const router = createBrowserRouter([
@@ -22,13 +24,17 @@ import RequestPrivate from "../provider/RequestPrivate";
          index: true,
          path: "/",
          element: <Home></Home>,
-         loader: () => fetch('http://localhost:3000/topfoods')
+         loader: () => fetch('http://localhost:3000/foods/top')
          
        },
        {
          path: "/availablefoods",
          element: <AvailableFoods></AvailableFoods>,
-         loader: () => fetch('http://localhost:3000/allfoods')
+         loader: () => fetch('http://localhost:3000/foods')
+       },
+       {
+         path: "/fooddetails/:id",
+         element:(<FoodDetailsPrivate><FoodDetails/></FoodDetailsPrivate>)
        },
        {
          path: "/addfood",

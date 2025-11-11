@@ -62,7 +62,7 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               <li>
-                  <li>{user.displayName || "No Name"}</li>
+                  <li>{user.displayName}</li>
             <li>{user.email}</li>
           {/* <a className="justify-between">
             Profile

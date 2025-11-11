@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router';
 
 
-const AllFoods = ({foods}) => {
+const AllFoods = ({ foods }) => {
+
+  const [search, setSearch] = useState('');
+
+  //  const filteredPlants = plants.filter((plant) =>
+  //   plant.plantName.toLowerCase().includes(search)
+  // );
+
+  const Searchfilter = foods.filter((food) =>
+    food.food_name.toLowerCase().includes(search)
+  );
+
+
+  const { _id} = foods
   console.log(foods);
+
 
   return (
     <div>
@@ -24,7 +39,7 @@ const AllFoods = ({foods}) => {
       <path d="m21 21-4.3-4.3"></path>
     </g>
   </svg>
-  <input type="search" required placeholder="Search Foods" />
+  <input type="search" required placeholder="Search Foods" value={search} onChange={(e) => setSearch(e.target.value.toLowerCase())} />
     </label>
      </div>
     
@@ -34,7 +49,7 @@ const AllFoods = ({foods}) => {
     
     
       {
-        foods.map((food) => <div key='_id' className="card bg-base-100 w-96 shadow-sm h-96">
+        Searchfilter.map((food) => <div key='_id' className="card bg-base-100 w-96 shadow-sm h-96">
   <figure className="px-10 pt-10">
     <img
       src={food.food_image}
@@ -48,7 +63,7 @@ const AllFoods = ({foods}) => {
    <p> Additional Notes : {food.additional_notes}</p>
   
     <div className="card-actions">
-      <button className="btn btn-primary">Views Details</button>
+    <Link to={`/fooddetails/${food._id}`}>  <button className="btn btn-primary">Views Details</button></Link>
     </div>
   </div>
 </div>)
