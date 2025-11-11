@@ -3,6 +3,9 @@ import { Link } from 'react-router';
 
 
 const AllFoods = ({ foods }) => {
+  const { _id } = foods
+  console.log(foods)
+
 
   const [search, setSearch] = useState('');
 
@@ -15,8 +18,7 @@ const AllFoods = ({ foods }) => {
   );
 
 
-  const { _id} = foods
-  console.log(foods);
+  
 
 
   return (
@@ -49,11 +51,11 @@ const AllFoods = ({ foods }) => {
     
     
       {
-        Searchfilter.map((food) => <div key='_id' className="card bg-base-100 w-96 shadow-sm h-96">
+        Searchfilter.map((food) => <div key={_id} className="card bg-base-100 w-96 shadow-sm h-96">
   <figure className="px-10 pt-10">
     <img
       src={food.food_image}
-      alt="Shoes"
+      alt={food.food_name}
       className="rounded-xl" />
   </figure>
   <div className="card-body items-center text-center">

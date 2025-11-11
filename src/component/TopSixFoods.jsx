@@ -3,7 +3,10 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 
 import { Link } from 'react-router';
 
-const TopSixFoods = ({foods}) => {
+const TopSixFoods = ({ foods }) => {
+  const { _id } = foods;
+  console.log(foods);
+  
   return (
     <Link to="/availablefoods">
     
@@ -14,7 +17,7 @@ const TopSixFoods = ({foods}) => {
       <div className='grid grid-cols-3 items-center gap-10 w-10/12 mx-auto my-5'>
         
       {
-        foods.map((food) => <div key='_id' className="card bg-base-100 w-96 shadow-sm h-96">
+        foods.map((food) => <div key={_id} className="card bg-base-100 w-96 shadow-sm h-96">
   <figure className="px-10 pt-10">
     <img
       src={food.food_image}

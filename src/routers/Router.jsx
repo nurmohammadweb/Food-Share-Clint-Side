@@ -34,7 +34,8 @@ import FoodDetailsPrivate from "../provider/FoodDetailsPrivate";
        },
        {
          path: "/fooddetails/:id",
-         element:(<FoodDetailsPrivate><FoodDetails/></FoodDetailsPrivate>)
+         element: (<FoodDetailsPrivate><FoodDetails /></FoodDetailsPrivate>),
+         loader: ({params}) => fetch(`http://localhost:3000/foods/${params.id}`)
        },
        {
          path: "/addfood",
