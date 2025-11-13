@@ -5,8 +5,8 @@ import Login from "../pages/Login";
 import Regester from "../pages/Regester";
 import AvailableFoods from "../pages/AvailableFoods";
 import AddFood from "../pages/AddFood";
-import ManageMyFoods from "../component/ManageMyFoods";
-import MyFoodRequests from "../component/MyFoodRequests";
+
+
 import AddFoodPrivate from "../provider/AddFoodPrivate";
 import ManagePrivate from "../provider/ManagePrivate";
 import RequestPrivate from "../provider/RequestPrivate";
@@ -14,6 +14,9 @@ import FoodDetails from "../pages/foodDetails";
 import FoodDetailsPrivate from "../provider/FoodDetailsPrivate";
 import MyUpdateFood from "../pages/MyUpdateFood";
 import ErrorPage from "../pages/ErrorPage";
+import MyFoodRequests from "../pages/MyFoodRequests";
+import ManageMyFoods from "../pages/ManageMyFoods";
+import RequestSubmit from "../pages/RequestSubmit";
 
 
  const router = createBrowserRouter([
@@ -37,6 +40,10 @@ import ErrorPage from "../pages/ErrorPage";
          path: "/fooddetails/:id",
          element: (<FoodDetailsPrivate><FoodDetails /></FoodDetailsPrivate>),
          loader: ({params}) => fetch(`http://localhost:3000/foods/${params.id}`)
+       },
+       {
+         path: "/requsetsubmit",
+         element:<RequestSubmit></RequestSubmit>
        },
        {
          path: "/addfood",

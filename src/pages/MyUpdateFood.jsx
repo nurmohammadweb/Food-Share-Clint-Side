@@ -1,16 +1,26 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Swal from "sweetalert2";
 
 const MyUpdateFood = () => {
   const { id } = useParams();
-  const [food, setFood] = useState({});
+  const [food, setFood] = useState(null); // initially null
+  const [loading, setLoading] = useState(true);
 
- 
+  // Fetch food data
   useEffect(() => {
+    setLoading(true);
     fetch(`http://localhost:3000/foods/${id}`)
       .then(res => res.json())
-      .then(data => setFood(data));
+      .then(data => {
+        setFood(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
   }, [id]);
 
   // Handle update
@@ -35,9 +45,19 @@ const MyUpdateFood = () => {
       .then(data => {
         if (data.modifiedCount > 0) {
           Swal.fire("Updated!", "Your food info has been updated.", "success");
+          setFood(updatedFood); // update local state
+        } else {
+          Swal.fire("Oops!", "Nothing was updated.", "info");
         }
+      })
+      .catch(err => {
+        console.error(err);
+        Swal.fire("Error!", "Something went wrong.", "error");
       });
   };
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
+  if (!food) return <div className="text-center mt-10">Food not found.</div>;
 
   return (
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-xl p-6 mt-10">

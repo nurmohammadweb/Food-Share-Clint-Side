@@ -1,113 +1,80 @@
-import React, { use } from 'react';
-import { AuthContext } from '../provider/AuthProvider';
+
+import React, { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddFood = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const handleAddFood = (e) => {
     e.preventDefault();
+    const form = e.target;
 
-    const formData = {
-      food_name: e.target.name.value,
-      food_image:e.target.image.value,
-      food_quantity:e.target.quantity.value,
-      pickup_location:e.target.pickup.value,
-      expire_date:e.target.date.value,
-      additional_notes:e.target.description.value,
-      
-      donator_name: user.displayName,
-      donator_email: user.email,
-      donator_image: user?.photoURL || "/default-avatar.png"
+    const food_name = form.food_name.value.trim();
+    const food_image = form.food_image.value.trim();
+    const food_quantity = form.food_quantity.value.trim();
+    const pickup_location = form.pickup_location.value.trim();
+    const expire_date = form.expire_date.value;
+    const additional_notes = form.additional_notes.value.trim();
 
-      
+    //  Validation check
+    if (!food_name || !food_image || !food_quantity || !pickup_location || !expire_date) {
+      return Swal.fire("Error", "Please fill all required fields!", "error");
     }
-    fetch('http://localhost:3000/foods', {
-      method: 'POST',
-      headers: {
-       'content-type': "application/json",
-      },
-      body: JSON.stringify(formData)
 
+    const newFood = {
+      food_name,
+      food_image,
+      food_quantity,
+      pickup_location,
+      expire_date,
+      additional_notes,
+      donator_name: user?.displayName,
+      donator_email: user?.email,
+      donator_image: user?.photoURL,
+      food_status: "Available", // default status
+      createdAt: new Date(),
+    };
+
+    fetch("http://localhost:3000/foods", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(newFood),
     })
-    .then(res => res.json())
-     .then(data => {
-         console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire({
+            title: "Success!",
+            text: "Food added successfully!",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          form.reset();
+        } else {
+          Swal.fire("Error", "Failed to add food.", "error");
+        }
       })
-      .catch(err=> {
-      console.log(err)
-    })
-  }
-
+      .catch(() => Swal.fire("Error", "Server error occurred!", "error"));
+  };
 
   return (
-    <div className="hero bg-base-200">
-     
-  <div className="hero-content flex-col lg:flex-row-reverse">
-   
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-           <h1 className='text-center text-2xl p-2 font-bold'>
-      Add Food
-      </h1>
-      <div className="card-body">
-            <form onSubmit={handleAddFood}>
-              <fieldset className="fieldset">
-              
-              {/* Name */}
-          <label className="label">Food Name</label>
-              <input type="name"  name='name' className="input" placeholder="Name" />
-              
-           
-                   
-                {/* Photo URL */}
-            <label className="label">Food URL</label>
-            <input
-              name="image"
-              type="text"
-              className="input"
-              placeholder="image URL"
-            />
-                   
-                {/*Food Quantity */}
-            <label className="label">Food Quantity</label>
-            <input
-              name="quantity"
-              type="text"
-              className="input"
-              placeholder="Serves ?? people"
-            />
-                {/* Pickup Location */}
-            <label className="label">Pickup Location</label>
-            <input
-              name="pickup"
-              type="text"
-              className="input"
-              placeholder="Pickup Location"
-            />
-                {/*  expire_date */}
-            <label className="label"> Expire Date</label>
-            <input
-              name="date"
-              type="text"
-              className="input"
-              placeholder="year-month-day"
-            />
-                {/*  */}
-            <label className="label">Description</label>
-            <input
-              name="description"
-              type="text"
-              className="input"
-              placeholder="Description"
-            />
-        
-       
-          <button type='submit' value='input' className="btn btn-neutral mt-4">Add Food</button>
-        </fieldset>
-            </form>
-      </div>
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+      <h2 className="text-2xl font-semibold mb-5 text-center">Add New Food</h2>
+      <form onSubmit={handleAddFood} className="space-y-4">
+        <input type="text" name="food_name" placeholder="Food Name" className="border p-2 w-full rounded-md" required />
+        <input type="text" name="food_image" placeholder="Image URL (imgbb link)" className="border p-2 w-full rounded-md" required />
+        <input type="text" name="food_quantity" placeholder="e.g. Serves 3 people" className="border p-2 w-full rounded-md" required />
+        <input type="text" name="pickup_location" placeholder="Pickup Location" className="border p-2 w-full rounded-md" required />
+        <input type="date" name="expire_date" className="border p-2 w-full rounded-md" required />
+        <textarea name="additional_notes" placeholder="Additional Notes" className="border p-2 w-full rounded-md"></textarea>
+
+        <button type="submit" className="w-full bg-green-600 text-white font-medium py-2 rounded-md hover:bg-green-700 transition">
+          Add Food
+        </button>
+      </form>
     </div>
-  </div>
-</div>
   );
 };
 
