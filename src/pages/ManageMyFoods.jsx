@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router";
@@ -55,43 +54,38 @@ const ManageMyFoods = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-center">Manage My Foods</h2>
-
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h2 className="text-2xl sm:text-3xl font-semibold mb-8 text-center">Manage My Foods</h2>
       {foods.length === 0 ? (
-        <p className="text-center text-gray-500">No foods added yet.</p>
+        <p className="text-center text-gray-500 text-base sm:text-lg">No foods added yet.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {foods.map((food) => (
             <div
               key={food._id}
-              className="border rounded-xl shadow-md p-4 bg-white hover:shadow-lg transition"
+              className="border rounded-xl shadow-md p-4 bg-white hover:shadow-lg transition duration-300"
             >
               <img
                 src={food.food_image}
                 alt={food.food_name}
-                className="w-full h-48 object-cover rounded-lg mb-3"
+                className="w-full h-44 sm:h-48 md:h-52 object-cover rounded-lg mb-3"
               />
-              <h3 className="text-lg font-semibold">{food.food_name}</h3>
-              <p className="text-sm text-gray-600 mb-1">
-                Quantity: {food.food_quantity}
-              </p>
-              <p className="text-sm text-gray-600 mb-1">
-                Location: {food.pickup_location}
-              </p>
-              <p className="text-sm text-gray-600 mb-1">
+              <h3 className="text-lg font-semibold mb-1">{food.food_name}</h3>
+              <p className="text-sm text-gray-600">Quantity: {food.food_quantity}</p>
+              <p className="text-sm text-gray-600">Location: {food.pickup_location}</p>
+              <p className="text-sm text-gray-600">
                 Status: <span className="font-medium">{food.food_status}</span>
               </p>
-              <div className="flex justify-between mt-3">
+              <div className="flex flex-col sm:flex-row justify-between gap-2 mt-4">
                 <Link
                   to={`/update-food/${food._id}`}
-                  className="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700"
+                  className="bg-blue-600 text-white text-center px-3 py-1.5 rounded-md hover:bg-blue-700 w-full sm:w-auto"
                 >
                   Update
                 </Link>
                 <button
                   onClick={() => handleDelete(food._id)}
-                  className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"
+                  className="bg-red-600 text-white text-center px-3 py-1.5 rounded-md hover:bg-red-700 w-full sm:w-auto"
                 >
                   Delete
                 </button>
@@ -105,4 +99,3 @@ const ManageMyFoods = () => {
 };
 
 export default ManageMyFoods;
-
