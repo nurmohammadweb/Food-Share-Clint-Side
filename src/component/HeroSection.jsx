@@ -13,7 +13,7 @@ const HeroSection = () => {
     <div className="w-full">
       <Banner />
 
-      <div className="max-w-6xl mx-auto mt-10 px-4">
+      <div className="max-w-6xl mx-auto mt-10 px-4 ">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar]}
           spaceBetween={30}

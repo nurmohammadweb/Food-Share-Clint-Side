@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 import { IoPersonCircle, IoLogIn } from 'react-icons/io5';
+import { FcHome, FcList, FcAddDatabase, FcManager, FcLike } from 'react-icons/fc';
+import logo from '../assets/logo-removebg-preview.png'
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,7 +15,7 @@ const Navbar = () => {
   };
 
   const linkClass = ({ isActive }) =>
-    `m-3 text-[15px] font-bold ${isActive ? 'text-blue-600' : 'text-gray-800'}`;
+    `flex items-center gap-2 px-3 py-1 rounded hover:bg-gray-100 ${isActive ? 'text-blue-600' : 'text-gray-800'}`;
 
   return (
     <div className="navbar bg-base-100 shadow-sm px-4">
@@ -32,31 +34,51 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+            className="menu menu-compact dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
-            <NavLink to="/" className={linkClass}><li>Home</li></NavLink>
-            <NavLink to="/availablefoods" className={linkClass}><li>Available Foods</li></NavLink>
+            <li>
+              <NavLink to="/" className={linkClass}><FcHome /> Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/availablefoods" className={linkClass}><FcList /> Available Foods</NavLink>
+            </li>
             {user && (
               <>
-                <NavLink to="/addfood" className={linkClass}><li>Add Food</li></NavLink>
-                <NavLink to="/managemyfoods" className={linkClass}><li>Manage My Foods</li></NavLink>
-                <NavLink to="/myfoodrequests" className={linkClass}><li>My Food Requests</li></NavLink>
+                <li>
+                  <NavLink to="/addfood" className={linkClass}><FcAddDatabase /> Add Food</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/managemyfoods" className={linkClass}><FcManager /> Manage My Foods</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/myfoodrequests" className={linkClass}><FcLike /> My Food Requests</NavLink>
+                </li>
               </>
             )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">PlateShare</Link>
+        <Link to="/" className="btn btn-ghost text-xl"><img className='w-10' src={logo} alt="logo" /> PlateShare</Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <NavLink to="/" className={linkClass}><li>Home</li></NavLink>
-          <NavLink to="/availablefoods" className={linkClass}><li>Available Foods</li></NavLink>
+          <li>
+            <NavLink to="/" className={linkClass}><FcHome /> Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/availablefoods" className={linkClass}><FcList /> Available Foods</NavLink>
+          </li>
           {user && (
             <>
-              <NavLink to="/addfood" className={linkClass}><li>Add Food</li></NavLink>
-              <NavLink to="/managemyfoods" className={linkClass}><li>Manage My Foods</li></NavLink>
-              <NavLink to="/myfoodrequests" className={linkClass}><li>My Food Requests</li></NavLink>
+              <li>
+                <NavLink to="/addfood" className={linkClass}><FcAddDatabase /> Add Food</NavLink>
+              </li>
+              <li>
+                <NavLink to="/managemyfoods" className={linkClass}><FcManager /> Manage My Foods</NavLink>
+              </li>
+              <li>
+                <NavLink to="/myfoodrequests" className={linkClass}><FcLike /> My Food Requests</NavLink>
+              </li>
             </>
           )}
         </ul>
