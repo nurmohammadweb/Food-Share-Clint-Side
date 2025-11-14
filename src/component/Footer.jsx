@@ -4,6 +4,7 @@ import logoFa from '../assets/facebook-removebg-preview.png'
 import logoIt from '../assets/images__2_-removebg-preview.png'
 import logoin from '../assets/in-removebg-preview.png'
 
+
 const Footer = () => {
   return (
     <footer className="bg-green-400 text-primary-content py-10 px-6 text-center">

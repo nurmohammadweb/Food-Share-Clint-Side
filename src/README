@@ -1,0 +1,41 @@
+# Food Share Platform
+
+## 1. Layout
+
+* **Navbar:**
+
+  * Not logged in → Logo, Home, Available Foods, Login
+  * Logged in → Logo, Home, Available Foods, Add Food, Manage My Foods, My Food Requests, Profile, Logout
+* **Footer:** Logo, copyright, social links
+
+## 2. Home Page
+
+* Banner + button
+* Featured Foods: top 6 by quantity
+* Show All button
+* 2 static sections (How it Works, Mission)
+
+## 3. Authentication(Firebase)
+
+* Register: name, email, photoURL, password (upper, lower, 6 chars)
+* Login: email, password
+* Google login on both pages
+
+## 4. Food CRUD (MongoDB)
+
+* **Add Food (Private):** form + imgbb upload, auto donor info, status=Available
+* **Available Foods (Public):** show only Available, View Details (login required)
+* **Food Details (Private):** full info + Request Food button
+* **Manage My Foods (Private):** user’s foods, update, delete
+
+## 5. Food Request System
+
+* Request Modal: location, reason, contact
+* Save with status=pending
+* Food Owner sees request table: Accept → status=accepted & food donated, Reject → rejected
+
+## 6. Others
+
+* Loading spinner
+* 404 page
+* Home animations (framer-motion)
