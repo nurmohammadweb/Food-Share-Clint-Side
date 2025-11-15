@@ -37,7 +37,7 @@ const AddFood = () => {
       createdAt: new Date(),
     };
 
-    fetch("http://localhost:3000/foods", {
+    fetch("https://food-share-server-ten.vercel.app/foods", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newFood),

@@ -15,7 +15,7 @@ const FoodDetails = () => {
   useEffect(() => {
     if (user?.email === food?.donator_email) {
       setLoadingRequests(true);
-      fetch(`http://localhost:3000/requests?ownerEmail=${food.donator_email}&foodId=${food._id}`)
+      fetch(`https://food-share-server-ten.vercel.app/requests?ownerEmail=${food.donator_email}&foodId=${food._id}`)
         .then((res) => res.json())
         .then((data) => setRequests(Array.isArray(data) ? data : []))
         .catch(() => setRequests([]))
@@ -25,7 +25,7 @@ const FoodDetails = () => {
 
   const handleStatusChange = async (requestId, status) => {
     try {
-      const res = await fetch(`http://localhost:3000/requests/${requestId}`, {
+      const res = await fetch(`https://food-share-server-ten.vercel.app/requests/${requestId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),

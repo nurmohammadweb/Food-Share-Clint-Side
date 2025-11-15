@@ -28,7 +28,7 @@ const RequestSubmit = ({modalOpen,setModalOpen}) => {
 
 
 
-    const res = await fetch("http://localhost:3000/requests", {
+    const res = await fetch("https://food-share-server-ten.vercel.app/requests", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(requestData)

@@ -19,7 +19,7 @@ const MyFoodRequests = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`http://localhost:3000/foodRequests?userEmail=${encodeURIComponent(user.email)}`)
+    fetch(`https://food-share-server-ten.vercel.app/foodRequests?userEmail=${encodeURIComponent(user.email)}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch requests");
         return res.json();
@@ -45,7 +45,7 @@ const MyFoodRequests = () => {
     if (!result.isConfirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/foodRequests/${requestId}`, {
+      const res = await fetch(`https://food-share-server-ten.vercel.app/foodRequests/${requestId}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete request");

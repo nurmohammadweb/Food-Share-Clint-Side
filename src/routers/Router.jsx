@@ -28,18 +28,18 @@ import RequestSubmit from "../pages/RequestSubmit";
          index: true,
          path: "/",
          element: <Home></Home>,
-         loader: () => fetch('http://localhost:3000/foods/top')
+         loader: () => fetch('https://food-share-server-ten.vercel.app/foods/top')
          
        },
        {
          path: "/availablefoods",
          element: <AvailableFoods></AvailableFoods>,
-         loader: () => fetch('http://localhost:3000/foods')
+         loader: () => fetch('https://food-share-server-ten.vercel.app/foods')
        },
        {
          path: "/fooddetails/:id",
          element: (<FoodDetailsPrivate><FoodDetails /></FoodDetailsPrivate>),
-         loader: ({params}) => fetch(`http://localhost:3000/foods/${params.id}`)
+         loader: ({params}) => fetch(`https://food-share-server-ten.vercel.app/foods/${params.id}`)
        },
        {
          path: "/requsetsubmit",

@@ -36,7 +36,7 @@ const MyUpdateFood = () => {
       additional_notes: form.additional_notes.value,
     };
 
-    fetch(`http://localhost:3000/foods/${id}`, {
+    fetch(`https://food-share-server-ten.vercel.app/foods/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedFood),
