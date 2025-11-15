@@ -69,12 +69,14 @@ const FoodDetails = () => {
             onClick={() => setModalOpen(true)}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors w-full"
           >
-            Request This Food
+            Request Food
           </button>
         )}
       </div>
 
       <RequestSubmit modalOpen={modalOpen} setModalOpen={setModalOpen} food={food} />
+ 
+
 
       {user?.email === food.donator_email && (
         <div className="mt-10 w-full max-w-4xl">

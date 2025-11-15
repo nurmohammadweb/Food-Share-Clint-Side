@@ -38,9 +38,14 @@ const AllFoods = ({ foods }) => {
             </figure>
             <div className="card-body items-center text-center">
               <p className="font-semibold">Food Name: {food.food_name}</p>
+              <div className='flex justify-center items-center gap-4'>
+                 <img className='rounded-full w-10 ' src={food.donator_image} alt="" />
+                <p className="font-semibold">{food.donator_name}</p>
+               
+             </div>
               <p>Quantity: {food.food_quantity}</p>
               <p>Expire Date: {food.expire_date}</p>
-              <p className="text-sm text-gray-600">Notes: {food.additional_notes}</p>
+              <p className="text-sm text-gray-600">Pickup Location: {food.pickup_location}</p>
               <div className="card-actions mt-4">
                 <Link to={`/fooddetails/${food._id}`}>
                   <button className="btn btn-primary w-full">View Details</button>

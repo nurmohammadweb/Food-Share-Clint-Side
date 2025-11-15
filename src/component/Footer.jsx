@@ -11,9 +11,9 @@ const Footer = () => {
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex flex-col items-center md:items-start">
          <img className='w-50' src={logoImg} alt="" />
-          <p className="font-bold text-lg text-center">PlateShare</p>
-          <p className="text-sm opacity-80">
-            Sharing food, spreading kindness.<br />
+          <p className="font-bold text-center text-3xl">PlateShare</p>
+          <p className=" text-white text-2xl">
+            Sharing food, Spreading Kindness.<br />
             © {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
@@ -26,7 +26,7 @@ const Footer = () => {
       </a>
       
       <a href='https://www.linkedin.com/in/nur-mohammad-9aa6622a6/'  target="_blank" >
-       <img className='w-18 ' src={logoin} alt="logoin" /> </a>.
+       <img className='w-18 ' src={logoin} alt="logoin" /> </a>
       <a href='https://www.instagram.com/nur_mohammad690/'  target="_blank" >
        <img className='w-30 mr-4' src={logoIt} alt="" /> 
       </a>

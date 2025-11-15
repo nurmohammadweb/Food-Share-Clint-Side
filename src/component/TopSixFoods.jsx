@@ -32,9 +32,9 @@ const TopSixFoods = ({ foods }) => {
                 Notes: {food.additional_notes || "No notes provided"}
               </p>
               <div className="card-actions mt-3 w-full">
-                <Link to={`/fooddetails/${food._id}`}>
+                <Link to="/availablefoods">
                   <button className="btn btn-primary w-full hover:scale-105 transition-transform duration-200">
-                    View Details
+                    View all fodd
                   </button>
                 </Link>
               </div>

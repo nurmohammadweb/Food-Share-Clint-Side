@@ -57,11 +57,11 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl"><img className='w-10' src={logo} alt="logo" /> PlateShare</Link>
+        <Link to="/" className="btn btn-ghost text-xl ml-4"><img className='w-10' src={logo} alt="logo" /> PlateShare</Link>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu  menu-horizontal px-1">
           <li>
             <NavLink to="/" className={linkClass}><FcHome /> Home</NavLink>
           </li>
@@ -101,17 +101,17 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               <li className="mb-2 text-center">
-                <p className="font-medium">{user.displayName}</p>
-                <p className="text-sm text-gray-600">{user.email}</p>
+                <p className="font-medium">Name : {user.displayName}</p>
+                <p className="text-sm text-gray-600">Email : {user.email}</p>
               </li>
               <li className="text-center">
-                <button className="btn w-full" onClick={handleLogOut}>Logout</button>
+                <button className="btn w-full bg-green-300" onClick={handleLogOut}>Logout</button>
               </li>
             </ul>
           </div>
         ) : (
           <Link to="/auth/login">
-            <button className="btn flex items-center gap-2">
+            <button className="btn flex items-center mr-4 bg-red-400 gap-2">
               <IoLogIn /> Login
             </button>
           </Link>

@@ -14,6 +14,7 @@ const AddFood = () => {
     const food_image = form.food_image.value.trim();
     const food_quantity = form.food_quantity.value.trim();
     const pickup_location = form.pickup_location.value.trim();
+    
     const expire_date = form.expire_date.value;
     const additional_notes = form.additional_notes.value.trim();
 
